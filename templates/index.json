@@ -314,6 +314,34 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "kitchen_picks": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Kitchen Picks",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 12,
+        "columns_desktop": 6,
+        "color_scheme": "scheme-9",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -322,6 +350,7 @@
     "popular_categories",
     "new_arrivals",
     "best_selling",
-    "home_essentials"
+    "home_essentials",
+    "kitchen_picks"
   ]
 }

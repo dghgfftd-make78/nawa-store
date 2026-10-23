@@ -92,6 +92,17 @@
             "secondary_button_label": "#FFFFFF",
             "shadow": "#121212"
           }
+        },
+        "scheme-9": {
+          "settings": {
+            "background": "#6B74A8",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#3A4078",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
         }
       },
       "type_header_font": "assistant_n4",
