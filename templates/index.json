@@ -8,6 +8,8 @@
           "settings": {
             "fallback_image": "orvella-hero-image.png",
             "fallback_alt": "Orvella — Discover Timeless Luxury for Modern Living",
+            "fallback_ratio": 33.33,
+            "fallback_bg": "#F4EEE3",
             "image_overlay_opacity": 0,
             "box_align": "bottom-center",
             "show_text_box": false,
@@ -24,6 +26,8 @@
           "settings": {
             "fallback_image": "orvella-hero-new-arrival.png",
             "fallback_alt": "Orvella New Arrival — Your household solutions start with us",
+            "fallback_ratio": 30.68,
+            "fallback_bg": "#F4EEE3",
             "image_overlay_opacity": 0,
             "box_align": "bottom-center",
             "show_text_box": false,
@@ -42,7 +46,7 @@
       ],
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "large",
+        "slide_height": "adapt_image",
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 5,

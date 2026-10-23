@@ -23,6 +23,15 @@
       }
     }
   {%- endstyle -%}
+{%- elsif section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.fallback_ratio != blank -%}
+  {%- style -%}
+    #Slider-{{ section.id }}::before,
+    #Slider-{{ section.id }} .media::before {
+      padding-bottom: {{ section.blocks.first.settings.fallback_ratio }}%;
+      content: '';
+      display: block;
+    }
+  {%- endstyle -%}
 {%- endif -%}
 
 <slideshow-component
@@ -98,7 +107,7 @@
   {%- endif -%}
 
   <div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank and section.blocks.first.settings.fallback_image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -120,7 +129,7 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+        <div class="slideshow__media banner__media media{% if block.settings.image == blank and block.settings.fallback_image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
           {%- if block.settings.image -%}
             {%- liquid
               assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
@@ -156,7 +165,7 @@
               alt="{{ block.settings.fallback_alt | default: shop.name | escape }}"
               loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
               {% if forloop.first %}fetchpriority="high"{% endif %}
-              style="display:block; width:100%; height:100%; object-fit:cover; object-position:center center;"
+              style="display:block; width:100%; height:100%; object-fit:contain; object-position:center center; background-color:{{ block.settings.fallback_bg | default: '#F4EEE3' }};"
             >
             {%- if block.settings.link != blank -%}</a>{%- endif -%}
           {%- else -%}
@@ -415,6 +424,17 @@
           "type": "text",
           "id": "fallback_alt",
           "label": "Fallback image alt text"
+        },
+        {
+          "type": "number",
+          "id": "fallback_ratio",
+          "label": "Fallback image aspect ratio (height/width as %, e.g. 33.3)"
+        },
+        {
+          "type": "color",
+          "id": "fallback_bg",
+          "label": "Fallback image background (letterbox) color",
+          "default": "#F4EEE3"
         },
         {
           "type": "range",
