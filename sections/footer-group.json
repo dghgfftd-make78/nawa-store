@@ -4,16 +4,55 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "brand_1": {
+          "type": "brand_contact",
+          "settings": {
+            "show_social": true,
+            "address_label": "Address",
+            "address_text": "Faisalabad, Pakistan",
+            "whatsapp_label": "Whatsapp:",
+            "whatsapp_number": "",
+            "phone_label": "Phone-No:",
+            "phone_number": ""
+          }
+        },
+        "links_1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick Links",
+            "menu": "footer"
+          }
+        },
+        "links_2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Product Categories",
+            "menu": "product-categories"
+          }
+        },
+        "mission_1": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Mission",
+            "subtext": "<p>Our mission is to fulfill customers' shopping needs with timeless, quality home essentials delivered across Pakistan.</p><p>We are always looking to improve our service to customers, and that means listening to what our customers want.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "links_1",
+        "links_2",
+        "mission_1"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
+        "enable_follow_on_shop": false,
         "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,

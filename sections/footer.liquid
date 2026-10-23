@@ -101,6 +101,42 @@
                         {%- endfor -%}
                       </ul>
                     {%- endif -%}
+                  {%- when 'brand_contact' -%}
+                    <div class="footer-block__brand-info">
+                      <div class="footer-block__image-wrapper" style="max-width: min(100%, 150px);">
+                        <img
+                          src="{{ 'orvella-logo-maroon.png' | asset_url }}"
+                          alt="{{ shop.name }}"
+                          loading="lazy"
+                          width="150"
+                          height="{{ 150 | divided_by: 1.898 | round }}"
+                          style="width:100%; height:auto;"
+                        >
+                      </div>
+                      {%- if block.settings.show_social and has_social_icons -%}
+                        {%- render 'social-icons', class: 'footer__list-social' -%}
+                      {%- endif -%}
+                      <div class="footer-block__brand-contact rte" style="margin-top: 1.5rem;">
+                        {%- if block.settings.address_text != blank -%}
+                          <p style="margin-bottom: 1rem;">
+                            <strong>{{ block.settings.address_label }}</strong><br>
+                            {{ block.settings.address_text }}
+                          </p>
+                        {%- endif -%}
+                        {%- if block.settings.whatsapp_number != blank -%}
+                          <p style="margin-bottom: 1rem;">
+                            <strong>{{ block.settings.whatsapp_label }}</strong><br>
+                            <a href="https://wa.me/{{ block.settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' }}" class="link">{{ block.settings.whatsapp_number }}</a>
+                          </p>
+                        {%- endif -%}
+                        {%- if block.settings.phone_number != blank -%}
+                          <p>
+                            <strong>{{ block.settings.phone_label }}</strong><br>
+                            <a href="tel:{{ block.settings.phone_number | remove: ' ' | remove: '-' }}" class="link">{{ block.settings.phone_number }}</a>
+                          </p>
+                        {%- endif -%}
+                      </div>
+                    </div>
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info">
                       {%- if settings.brand_image != blank -%}
@@ -120,6 +156,20 @@
                               height: brand_image_height,
                               width: settings.brand_image_width
                           }}
+                        </div>
+                      {%- else -%}
+                        <div
+                          class="footer-block__image-wrapper"
+                          style="max-width: min(100%, {{ settings.brand_image_width | default: 150 }}px);"
+                        >
+                          <img
+                            src="{{ 'orvella-logo-maroon.png' | asset_url }}"
+                            alt="{{ shop.name }}"
+                            loading="lazy"
+                            width="{{ settings.brand_image_width | default: 150 }}"
+                            height="{{ settings.brand_image_width | default: 150 | divided_by: 1.898 | round }}"
+                            style="width:100%; height:auto;"
+                          >
                         </div>
                       {%- endif -%}
                       {%- if settings.brand_headline != blank -%}
@@ -343,6 +393,52 @@
           "id": "menu",
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+        }
+      ]
+    },
+    {
+      "type": "brand_contact",
+      "name": "Brand + Contact (custom)",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": true,
+          "label": "Show social icons"
+        },
+        {
+          "type": "text",
+          "id": "address_label",
+          "default": "Address",
+          "label": "Address label"
+        },
+        {
+          "type": "text",
+          "id": "address_text",
+          "default": "Faisalabad, Pakistan",
+          "label": "Address text"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_label",
+          "default": "Whatsapp:",
+          "label": "Whatsapp label"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_number",
+          "label": "Whatsapp number"
+        },
+        {
+          "type": "text",
+          "id": "phone_label",
+          "default": "Phone-No:",
+          "label": "Phone label"
+        },
+        {
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone number"
         }
       ]
     },
