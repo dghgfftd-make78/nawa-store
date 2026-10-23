@@ -16,16 +16,19 @@
 
   {%- if section.settings.compact -%}
     .section-{{ section.id }}-padding .multicolumn-card-spacing {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      margin-left: 1rem;
-      margin-right: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
     }
     .section-{{ section.id }}-padding .multicolumn-list h3 {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
     }
     .section-{{ section.id }}-padding .multicolumn-list p {
-      font-size: 1.3rem;
+      font-size: 0.95rem;
+    }
+    .section-{{ section.id }}-padding .multicolumn-card__info > :nth-child(2) {
+      margin-top: 0.25rem;
     }
   {%- endif -%}
 {%- endstyle -%}

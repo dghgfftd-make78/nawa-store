@@ -154,8 +154,8 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "compact": true,
-        "padding_top": 8,
-        "padding_bottom": 8
+        "padding_top": 4,
+        "padding_bottom": 4
       }
     },
     "popular_categories": {
