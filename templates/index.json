@@ -1,20 +1,54 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {},
-      "block_order": [],
+    "hero_slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "fallback_image": "orvella-hero-image.png",
+            "fallback_alt": "Orvella — Discover Timeless Luxury for Modern Living",
+            "image_overlay_opacity": 0,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "color_scheme": "scheme-3",
+            "text_alignment": "center",
+            "heading_size": "h1",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "fallback_image": "orvella-hero-new-arrival.png",
+            "fallback_alt": "Orvella New Arrival — Your household solutions start with us",
+            "image_overlay_opacity": 0,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "color_scheme": "scheme-3",
+            "text_alignment": "center",
+            "heading_size": "h1",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
       "settings": {
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about Orvella"
       }
     },
     "featured_collection": {
@@ -47,7 +81,7 @@
     }
   },
   "order": [
-    "image_banner",
+    "hero_slideshow",
     "featured_collection"
   ]
 }
