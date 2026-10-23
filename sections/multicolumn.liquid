@@ -13,6 +13,21 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if section.settings.compact -%}
+    .section-{{ section.id }}-padding .multicolumn-card-spacing {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .section-{{ section.id }}-padding .multicolumn-list h3 {
+      font-size: 1.5rem;
+    }
+    .section-{{ section.id }}-padding .multicolumn-list p {
+      font-size: 1.3rem;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -373,6 +388,12 @@
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "compact",
+      "default": false,
+      "label": "Compact (smaller boxes)"
     },
     {
       "type": "header",
