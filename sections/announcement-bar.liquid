@@ -18,6 +18,34 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+{%- if section.settings.marquee -%}
+  {%- style -%}
+    #AnnouncementBar-{{ section.id }} {
+      overflow: hidden;
+    }
+    #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform;
+      animation: announcement-marquee-{{ section.id }} {{ section.settings.marquee_speed }}s linear infinite;
+    }
+    @keyframes announcement-marquee-{{ section.id }} {
+      0% {
+        transform: translateX(100vw);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+        animation: none;
+        white-space: normal;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
 >
@@ -27,6 +55,7 @@
     {%- endif -%}
     {%- if section.blocks.size == 1 -%}
       <div
+        id="AnnouncementBar-{{ section.id }}"
         class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
         role="region"
         aria-label="{{ 'sections.header.announcement' | t }}"
@@ -198,6 +227,22 @@
       "id": "show_line_separator",
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "marquee",
+      "default": false,
+      "label": "Scrolling marquee text"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "unit": "s",
+      "default": 14,
+      "label": "Marquee speed (lower = faster)"
     },
     {
       "type": "header",
