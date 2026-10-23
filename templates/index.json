@@ -105,6 +105,130 @@
         "accessibility_info": "Slideshow about Orvella"
       }
     },
+    "trust_badges": {
+      "type": "multicolumn",
+      "blocks": {
+        "badge_1": {
+          "type": "column",
+          "settings": {
+            "title": "Open & Check",
+            "text": "<p>Before Payment</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "badge_2": {
+          "type": "column",
+          "settings": {
+            "title": "365-Day",
+            "text": "<p>Easy Returns</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "badge_3": {
+          "type": "column",
+          "settings": {
+            "title": "Cash on Delivery",
+            "text": "<p>Pay when it arrives</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3"
+      ],
+      "settings": {
+        "title": "",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "popular_categories": {
+      "type": "collection-list",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Home Improvement",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Electronics",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Exclusive Collection",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Storage & Organizers",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "title": "Kitchen & Dining",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_6": {
+          "type": "category",
+          "settings": {
+            "title": "Baby & Kids",
+            "fallback_image": "",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6"
+      ],
+      "settings": {
+        "title": "Popular Categories",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1",
+        "swipe_on_mobile": true,
+        "columns_mobile": "2",
+        "show_view_all": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -136,6 +260,8 @@
   },
   "order": [
     "hero_slideshow",
+    "trust_badges",
+    "popular_categories",
     "featured_collection"
   ]
 }

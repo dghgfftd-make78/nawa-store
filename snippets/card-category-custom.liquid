@@ -1,0 +1,54 @@
+{% comment %}
+  Renders a custom category tile that does not depend on a real Shopify collection.
+  Accepts:
+  - title: {String} category label
+  - fallback_image: {String} filename of an image in the theme's assets folder
+  - link: {String} url the tile links to
+  - placeholder_image: {String} Dawn placeholder key used when fallback_image is blank
+
+  Usage:
+  {% render 'card-category-custom', title: '...', fallback_image: '...', link: '...' %}
+{% endcomment %}
+
+<div class="card-wrapper animate-arrow collection-card-wrapper">
+  <div class="card card--card card--media color-{{ settings.collection_card_color_scheme }} gradient">
+    <div class="card__inner ratio" style="--ratio-percent: 100%;">
+      <div class="card__media">
+        <div class="media media--transparent media--hover-effect">
+          {%- if link != blank -%}<a href="{{ link }}">{%- endif -%}
+          {%- if fallback_image != blank -%}
+            <img
+              src="{{ fallback_image | asset_url }}"
+              alt="{{ title | default: 'Category' | escape }}"
+              loading="lazy"
+              class="motion-reduce"
+              style="width:100%; height:100%; object-fit:cover; object-position:center center;"
+            >
+          {%- else -%}
+            {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          {%- if link != blank -%}</a>{%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="card__content">
+      <div class="card__information">
+        <h3 class="card__heading">
+          <a
+            {% if link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ link }}"
+            {% endif %}
+            class="full-unstyled-link"
+          >
+            {{- title | default: 'Category' | escape -}}
+            <span class="icon-wrap">
+              {{- 'icon-arrow.svg' | inline_asset_content -}}
+            </span>
+          </a>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

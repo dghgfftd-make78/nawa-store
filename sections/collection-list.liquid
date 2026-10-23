@@ -72,12 +72,21 @@
           >
             {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
             {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-            {% render 'card-collection',
-              card_collection: block.settings.collection,
-              media_aspect_ratio: section.settings.image_ratio,
-              columns: columns,
-              placeholder_image: placeholder_image
-            %}
+            {%- if block.type == 'category' -%}
+              {% render 'card-category-custom',
+                title: block.settings.title,
+                fallback_image: block.settings.fallback_image,
+                link: block.settings.link,
+                placeholder_image: placeholder_image
+              %}
+            {%- else -%}
+              {% render 'card-collection',
+                card_collection: block.settings.collection,
+                media_aspect_ratio: section.settings.image_ratio,
+                columns: columns,
+                placeholder_image: placeholder_image
+              %}
+            {%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -284,6 +293,29 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "name": "Category tile (custom)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category name"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image",
+          "label": "Image (theme asset filename)",
+          "info": "Enter a filename from the theme's assets folder, e.g. category-electronics.png. Leave blank to show a placeholder until a real image is added."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Where this category tile goes. Point to a real collection once one is created."
         }
       ]
     }
