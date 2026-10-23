@@ -89,10 +89,10 @@
         }
       },
       "block_order": [
+        "slide_4",
         "slide_1",
         "slide_2",
-        "slide_3",
-        "slide_4"
+        "slide_3"
       ],
       "settings": {
         "layout": "full_bleed",
