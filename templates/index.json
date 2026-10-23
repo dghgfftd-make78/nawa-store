@@ -90,8 +90,8 @@
         }
       },
       "block_order": [
-        "slide_4",
         "slide_1",
+        "slide_4",
         "slide_2",
         "slide_3"
       ],
