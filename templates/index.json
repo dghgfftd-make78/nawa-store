@@ -165,7 +165,7 @@
           "type": "category",
           "settings": {
             "title": "Home Improvement",
-            "fallback_image": "",
+            "fallback_image": "orvella-kitchen-dining.png",
             "link": "shopify://collections/all"
           }
         },
@@ -173,7 +173,7 @@
           "type": "category",
           "settings": {
             "title": "Electronics",
-            "fallback_image": "",
+            "fallback_image": "orvella-grand-opening-sale.png",
             "link": "shopify://collections/all"
           }
         },
@@ -181,7 +181,7 @@
           "type": "category",
           "settings": {
             "title": "Exclusive Collection",
-            "fallback_image": "",
+            "fallback_image": "orvella-hero-image.png",
             "link": "shopify://collections/all"
           }
         },
@@ -189,7 +189,7 @@
           "type": "category",
           "settings": {
             "title": "Storage & Organizers",
-            "fallback_image": "",
+            "fallback_image": "orvella-kitchen-dining.png",
             "link": "shopify://collections/all"
           }
         },
@@ -197,7 +197,7 @@
           "type": "category",
           "settings": {
             "title": "Kitchen & Dining",
-            "fallback_image": "",
+            "fallback_image": "orvella-kitchen-dining.png",
             "link": "shopify://collections/all"
           }
         },
@@ -205,7 +205,7 @@
           "type": "category",
           "settings": {
             "title": "Baby & Kids",
-            "fallback_image": "",
+            "fallback_image": "orvella-hero-new-arrival.png",
             "link": "shopify://collections/all"
           }
         }
