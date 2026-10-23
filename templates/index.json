@@ -44,11 +44,55 @@
             "button_style_secondary": false,
             "text_alignment_mobile": "center"
           }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "fallback_image": "orvella-grand-opening-sale.png",
+            "fallback_alt": "Orvella Grand Opening Sale — Flat 20% off on everything, use code WELCOME20",
+            "fallback_ratio": 50,
+            "fallback_bg": "#6b0f1a",
+            "image_overlay_opacity": 0,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "color_scheme": "scheme-3",
+            "text_alignment": "center",
+            "heading": "",
+            "subheading": "",
+            "button_label": "",
+            "heading_size": "h1",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "fallback_image": "orvella-kitchen-dining.png",
+            "fallback_alt": "Orvella Kitchen and Dining — Where function meets effortless style",
+            "fallback_ratio": 30.68,
+            "fallback_bg": "#FFFFFF",
+            "image_overlay_opacity": 0,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "color_scheme": "scheme-3",
+            "text_alignment": "center",
+            "heading": "",
+            "subheading": "",
+            "button_label": "",
+            "heading_size": "h1",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "text_alignment_mobile": "center"
+          }
         }
       },
       "block_order": [
         "slide_1",
-        "slide_2"
+        "slide_2",
+        "slide_3",
+        "slide_4"
       ],
       "settings": {
         "layout": "full_bleed",
