@@ -21,9 +21,18 @@
 {%- if section.settings.marquee -%}
   {%- style -%}
     #AnnouncementBar-{{ section.id }} {
+      position: relative;
       overflow: hidden;
+      display: block;
+      min-height: 3.8rem;
+    }
+    #AnnouncementBar-{{ section.id }} .announcement-bar__link {
+      display: block;
     }
     #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+      position: absolute;
+      top: 50%;
+      left: 100%;
       display: inline-block;
       white-space: nowrap;
       will-change: transform;
@@ -31,16 +40,18 @@
     }
     @keyframes announcement-marquee-{{ section.id }} {
       0% {
-        transform: translateX(100vw);
+        transform: translate(0, -50%);
       }
       100% {
-        transform: translateX(-120vw);
+        transform: translate(calc(-100% - 100vw), -50%);
       }
     }
     @media (prefers-reduced-motion: reduce) {
       #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+        position: static;
         animation: none;
         white-space: normal;
+        transform: none;
       }
     }
   {%- endstyle -%}
