@@ -6,6 +6,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
+            "fallback_video": "orvella-hero-video.mp4",
             "fallback_image": "orvella-hero-image.png",
             "fallback_alt": "Orvella — Discover Timeless Luxury for Modern Living",
             "fallback_ratio": 33.33,
