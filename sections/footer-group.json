@@ -18,17 +18,33 @@
           }
         },
         "links_1": {
-          "type": "link_list",
+          "type": "custom_links",
           "settings": {
             "heading": "Quick Links",
-            "menu": "footer"
+            "link_1_label": "Home",
+            "link_1_url": "/",
+            "link_2_label": "Catalog",
+            "link_2_url": "/collections/all",
+            "link_3_label": "Contact Us",
+            "link_3_url": "/pages/contact"
           }
         },
         "links_2": {
-          "type": "link_list",
+          "type": "custom_links",
           "settings": {
             "heading": "Product Categories",
-            "menu": "product-categories"
+            "link_1_label": "Home Improvement",
+            "link_1_url": "/collections/all",
+            "link_2_label": "Electronics",
+            "link_2_url": "/collections/all",
+            "link_3_label": "Exclusive Collection",
+            "link_3_url": "/collections/all",
+            "link_4_label": "Storage & Organizers",
+            "link_4_url": "/collections/all",
+            "link_5_label": "Kitchen & Dining",
+            "link_5_url": "/collections/all",
+            "link_6_label": "Baby & Kids",
+            "link_6_url": "/collections/all"
           }
         },
         "mission_1": {
