@@ -83,8 +83,18 @@
       }}
     </div>
   {%- elsif section.settings.image_2 == blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    <div style="position:static; width:100%;">
+      <a href="{{ routes.all_products_collection_url }}" style="display:block; width:100%;">
+        <img
+          src="{{ 'orvella-hero-image.png' | asset_url }}"
+          alt="Orvella — Discover Timeless Luxury for Modern Living"
+          width="2736"
+          height="912"
+          style="width:100%; height:auto; display:block;"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </a>
     </div>
   {%- endif -%}
   {%- if section.settings.image_2 != blank -%}
@@ -115,6 +125,7 @@
       }}
     </div>
   {%- endif -%}
+  {%- if section.blocks.size > 0 -%}
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
@@ -164,6 +175,7 @@
       {%- endfor -%}
     </div>
   </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
