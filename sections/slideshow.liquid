@@ -31,6 +31,19 @@
       content: '';
       display: block;
     }
+    /* Safety net: guarantee visible height on every screen size, in case the
+       padding-bottom technique above doesn't take effect (seen on some mobile
+       browsers). */
+    #Slider-{{ section.id }} .slideshow__slide,
+    #Slider-{{ section.id }} .slideshow__media {
+      min-height: 420px;
+    }
+    @media screen and (max-width: 749px) {
+      #Slider-{{ section.id }} .slideshow__slide,
+      #Slider-{{ section.id }} .slideshow__media {
+        min-height: 220px;
+      }
+    }
   {%- endstyle -%}
 {%- endif -%}
 
