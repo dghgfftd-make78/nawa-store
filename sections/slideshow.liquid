@@ -167,7 +167,12 @@
               autoplay
               muted
               playsinline
-              style="display:block; width:100%; height:100%; object-fit:cover; object-position:center center;"
+              webkit-playsinline
+              preload="auto"
+              {% if block.settings.fallback_image != blank %}
+                poster="{{ block.settings.fallback_image | asset_url }}"
+              {% endif %}
+              style="display:block; width:100%; height:100%; object-fit:cover; object-position:center center; background-color:{{ block.settings.fallback_bg | default: '#F4EEE3' }};"
             >
               <source src="{{ block.settings.fallback_video | asset_url }}" type="video/mp4">
             </video>
