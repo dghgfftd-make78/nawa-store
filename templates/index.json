@@ -106,58 +106,6 @@
         "accessibility_info": "Slideshow about Orvella"
       }
     },
-    "trust_badges": {
-      "type": "multicolumn",
-      "blocks": {
-        "badge_1": {
-          "type": "column",
-          "settings": {
-            "title": "Open & Check",
-            "text": "<p>Before Payment</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "badge_2": {
-          "type": "column",
-          "settings": {
-            "title": "365-Day",
-            "text": "<p>Easy Returns</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "badge_3": {
-          "type": "column",
-          "settings": {
-            "title": "Cash on Delivery",
-            "text": "<p>Pay when it arrives</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "badge_1",
-        "badge_2",
-        "badge_3"
-      ],
-      "settings": {
-        "title": "",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "compact": true,
-        "padding_top": 4,
-        "padding_bottom": 4
-      }
-    },
     "popular_categories": {
       "type": "collection-list",
       "blocks": {
@@ -346,7 +294,6 @@
   },
   "order": [
     "hero_slideshow",
-    "trust_badges",
     "popular_categories",
     "new_arrivals",
     "best_selling",
