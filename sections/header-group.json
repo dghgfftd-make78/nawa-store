@@ -20,8 +20,6 @@
           "type": "announcement",
           "settings": {
             "text": "Orvella Sale is Live Now 🎉",
-            "text_alignment": "center",
-            "color_scheme": "scheme-4",
             "link": "shopify://collections/all"
           }
         }
