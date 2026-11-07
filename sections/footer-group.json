@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -18,51 +27,24 @@
           }
         },
         "links_1": {
-          "type": "custom_links",
+          "type": "link_list",
           "settings": {
-            "heading": "Terms & Policies",
-            "link_1_label": "Track My Order",
-            "link_1_url": "/account",
-            "link_2_label": "Refund Policy",
-            "link_2_url": "/policies/refund-policy",
-            "link_3_label": "Terms & Privacy",
-            "link_3_url": "/policies/terms-of-service",
-            "link_4_label": "Shipping Policy",
-            "link_4_url": "/policies/shipping-policy",
-            "link_5_label": "FAQ",
-            "link_5_url": "/pages/faq"
+            "heading": "Quick Links",
+            "menu": "footer"
           }
         },
         "links_2": {
-          "type": "custom_links",
+          "type": "link_list",
           "settings": {
             "heading": "Product Categories",
-            "link_1_label": "Home Improvement",
-            "link_1_url": "/collections/home-improvement",
-            "link_2_label": "Electronics",
-            "link_2_url": "/collections/electronics",
-            "link_3_label": "Exclusive Collection",
-            "link_3_url": "/collections/exclusive-collection",
-            "link_4_label": "Storage & Organizers",
-            "link_4_url": "/collections/storage-organizers",
-            "link_5_label": "Kitchen & Dining",
-            "link_5_url": "/collections/kitchen-dining",
-            "link_6_label": "Baby & Kids",
-            "link_6_url": "/collections/baby-kids"
+            "menu": ""
           }
         },
         "mission_1": {
-          "type": "custom_links",
+          "type": "text",
           "settings": {
-            "heading": "Company Info",
-            "link_1_label": "About Us",
-            "link_1_url": "/pages/about-us",
-            "link_2_label": "Contact Us",
-            "link_2_url": "/pages/contact",
-            "link_3_label": "Home",
-            "link_3_url": "/",
-            "link_4_label": "Catalog",
-            "link_4_url": "/collections/all"
+            "heading": "Our Mission",
+            "subtext": "<p>Our mission is to fulfill customers' shopping needs with timeless, quality home essentials delivered across Pakistan.</p><p>We are always looking to improve our service to customers, and that means listening to what our customers want.</p>"
           }
         }
       },
@@ -73,8 +55,8 @@
         "mission_1"
       ],
       "settings": {
-        "color_scheme": "scheme-6",
-        "newsletter_enable": true,
+        "color_scheme": "scheme-1",
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
         "show_social": true,
