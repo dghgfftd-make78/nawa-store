@@ -121,7 +121,7 @@
           "type": "category",
           "settings": {
             "title": "Electronics",
-            "fallback_image": "orvella-grand-opening-sale.png",
+            "fallback_image": "category-electronics.png",
             "link": "/collections/electronics"
           }
         },
