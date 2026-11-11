@@ -177,11 +177,11 @@
             <video
               id="SlideVideo-{{ section.id }}-{{ forloop.index }}"
               class="slideshow__fallback-video"
-              autoplay
+              {% if forloop.first %}autoplay{% endif %}
               muted
               playsinline
               webkit-playsinline
-              preload="auto"
+              preload="{% if forloop.first %}auto{% else %}metadata{% endif %}"
               {% if block.settings.fallback_image != blank %}
                 poster="{{ block.settings.fallback_image | asset_url }}"
               {% endif %}
@@ -314,27 +314,65 @@
   (function () {
     var component = document.getElementById('Slideshow-{{ section.id }}');
     if (!component) return;
-    var videos = component.querySelectorAll('.slideshow__fallback-video');
+    var videos = Array.prototype.slice.call(component.querySelectorAll('.slideshow__fallback-video'));
     if (!videos.length) return;
 
-    videos.forEach(function (video) {
-      // Stop the fixed-timer autoplay from cutting the video short: pause it
-      // on load, and only advance to the next slide once the video ends.
-      var pauseAutoplay = function () {
-        if (typeof component.pause === 'function') component.pause();
-      };
-      requestAnimationFrame(pauseAutoplay);
-      setTimeout(pauseAutoplay, 50);
-
-      video.addEventListener('ended', function () {
-        if (component.nextButton) {
-          component.nextButton.click();
-        }
-        if (typeof component.play === 'function') {
-          component.play();
+    // Only the video on the visible slide plays, from the start. While a video
+    // slide is showing, the fixed slide timer is paused and the slideshow moves
+    // on when the video ends; image slides keep the normal timer.
+    function activeVideo() {
+      var slides = component.querySelectorAll('.slideshow__slide');
+      var slide = slides[(component.currentPage || 1) - 1] || slides[0];
+      return slide ? slide.querySelector('.slideshow__fallback-video') : null;
+    }
+    function userPaused() {
+      return component.autoplayButtonIsSetToPlay === false;
+    }
+    function autoplayEnabled() {
+      return component.slider && component.slider.getAttribute('data-autoplay') === 'true';
+    }
+    function sync(restart) {
+      var current = activeVideo();
+      videos.forEach(function (video) {
+        if (video === current) {
+          if (restart) {
+            try { video.currentTime = 0; } catch (e) {}
+          }
+          var playing = video.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          video.pause();
         }
       });
+      if (current) {
+        if (typeof component.pause === 'function') component.pause();
+      } else if (autoplayEnabled() && !userPaused() && typeof component.play === 'function') {
+        component.play();
+      }
+    }
+
+    videos.forEach(function (video) {
+      video.addEventListener('ended', function () {
+        if (video !== activeVideo() || userPaused()) return;
+        if (component.nextButton) component.nextButton.click();
+      });
     });
+
+    component.addEventListener('slideChanged', function () {
+      sync(true);
+    });
+
+    // Hovering off or tabbing out restarts Dawn's timer; keep it paused on video slides.
+    ['mouseleave', 'focusout'].forEach(function (eventName) {
+      component.addEventListener(eventName, function () {
+        setTimeout(function () {
+          if (activeVideo() && typeof component.pause === 'function') component.pause();
+        }, 0);
+      });
+    });
+
+    requestAnimationFrame(function () { sync(false); });
+    setTimeout(function () { sync(false); }, 300);
   })();
 </script>
 
