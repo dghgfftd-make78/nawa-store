@@ -113,7 +113,7 @@
           "type": "category",
           "settings": {
             "title": "Home Improvement",
-            "fallback_image": "orvella-kitchen-dining.png",
+            "fallback_image": "category-home-improvement.png",
             "link": "/collections/home-improvement"
           }
         },
