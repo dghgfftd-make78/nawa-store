@@ -5,83 +5,76 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "brand_1": {
-          "type": "brand_contact",
+        "contact_1": {
+          "type": "contact_info",
           "settings": {
-            "show_social": true,
-            "address_label": "Address",
-            "address_text": "Lahore, Pakistan",
-            "whatsapp_label": "Whatsapp:",
-            "whatsapp_number": "",
-            "phone_label": "Phone-No:",
-            "phone_number": ""
+            "heading": "Contact Us",
+            "show_logo": true,
+            "address": "Lahore, Pakistan",
+            "email": "",
+            "phone": "",
+            "whatsapp": "",
+            "show_social": true
           }
         },
-        "links_1": {
+        "care_1": {
           "type": "custom_links",
           "settings": {
-            "heading": "Terms & Policies",
-            "link_1_label": "Track My Order",
-            "link_1_url": "/account",
-            "link_2_label": "Refund Policy",
-            "link_2_url": "/policies/refund-policy",
-            "link_3_label": "Terms & Privacy",
+            "heading": "Customer Care",
+            "link_1_label": "Home",
+            "link_1_url": "/",
+            "link_2_label": "Collections",
+            "link_2_url": "/collections",
+            "link_3_label": "About Us",
+            "link_3_url": "/pages/about-us",
+            "link_4_label": "Search",
+            "link_4_url": "/search",
+            "link_5_label": "Return & Exchange Procedure",
+            "link_5_url": "/policies/refund-policy"
+          }
+        },
+        "info_1": {
+          "type": "custom_links",
+          "settings": {
+            "heading": "Information",
+            "link_1_label": "Refund Policy",
+            "link_1_url": "/policies/refund-policy",
+            "link_2_label": "Privacy Policy",
+            "link_2_url": "/policies/privacy-policy",
+            "link_3_label": "Terms of Service",
             "link_3_url": "/policies/terms-of-service",
             "link_4_label": "Shipping Policy",
             "link_4_url": "/policies/shipping-policy",
-            "link_5_label": "FAQ",
-            "link_5_url": "/pages/faq"
+            "link_5_label": "Contact Information",
+            "link_5_url": "/policies/contact-information"
           }
         },
-        "links_2": {
-          "type": "custom_links",
+        "news_1": {
+          "type": "newsletter_signup",
           "settings": {
-            "heading": "Product Categories",
-            "link_1_label": "Home Improvement",
-            "link_1_url": "/collections/home-improvement",
-            "link_2_label": "Electronics",
-            "link_2_url": "/collections/electronics",
-            "link_3_label": "Exclusive Collection",
-            "link_3_url": "/collections/exclusive-collection",
-            "link_4_label": "Storage & Organizers",
-            "link_4_url": "/collections/storage-organizers-storage-organizers",
-            "link_5_label": "Kitchen & Dining",
-            "link_5_url": "/collections/kitchen-dining-kitchen-dining",
-            "link_6_label": "Baby & Kids",
-            "link_6_url": "/collections/baby-kids-baby-kids"
-          }
-        },
-        "mission_1": {
-          "type": "custom_links",
-          "settings": {
-            "heading": "Company Info",
-            "link_1_label": "About Us",
-            "link_1_url": "/pages/about-us",
-            "link_2_label": "Contact Us",
-            "link_2_url": "/pages/contact",
-            "link_3_label": "Home",
-            "link_3_url": "/",
-            "link_4_label": "Catalog",
-            "link_4_url": "/collections/all"
+            "heading": "Newsletter Signup",
+            "subtext": "Subscribe to our newsletter for exclusive updates",
+            "button_label": "Subscribe"
           }
         }
       },
       "block_order": [
-        "brand_1",
-        "links_1",
-        "links_2",
-        "mission_1"
+        "contact_1",
+        "care_1",
+        "info_1",
+        "news_1"
       ],
       "settings": {
         "color_scheme": "scheme-6",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "whatsapp_float": "",
+        "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36

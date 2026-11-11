@@ -25,6 +25,85 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .footer .footer-block__heading {
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+  }
+  .footer-contact-info__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+    line-height: 1.4;
+  }
+  .footer-contact-info__item svg {
+    flex: 0 0 auto;
+  }
+  .footer-newsletter-block__text {
+    margin: 0 0 1.4rem;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: 0.04rem;
+  }
+  .footer-newsletter-block__row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.4rem;
+    padding: 0.4rem;
+    border: 1px solid rgba(var(--color-foreground), 0.85);
+    border-radius: 0.8rem;
+    max-width: 36rem;
+  }
+  .footer-newsletter-block__row input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem 1.2rem;
+    font: inherit;
+    font-size: 1.5rem;
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    box-shadow: inset 0 0 0 1px rgba(var(--color-foreground), 0.25);
+  }
+  .footer-newsletter-block__row button {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0 1.8rem;
+    font: inherit;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
+    cursor: pointer;
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+  }
+  .footer-newsletter-block__message {
+    display: block;
+    margin-top: 1rem;
+  }
+  .footer-whatsapp-float {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 50;
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.25);
+  }
+  .footer-whatsapp-float svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -93,7 +172,24 @@
                         {%- assign url_key = 'link_' | append: i | append: '_url' -%}
                         {%- assign link_label = block.settings[label_key] -%}
                         {%- assign link_url = block.settings[url_key] -%}
-                        {%- if link_label != blank -%}
+                        {%- comment -%}Hide links to pages/policies that don't exist yet, so shoppers never land on a 404.{%- endcomment -%}
+                        {%- liquid
+                          assign show_link = true
+                          if link_url contains '/pages/'
+                            assign page_handle = link_url | split: '/pages/' | last | split: '?' | first
+                            if pages[page_handle].id == blank
+                              assign show_link = false
+                            endif
+                          elsif link_url contains '/policies/'
+                            assign show_link = false
+                            for policy in shop.policies
+                              if policy.url contains link_url
+                                assign show_link = true
+                              endif
+                            endfor
+                          endif
+                        -%}
+                        {%- if link_label != blank and show_link -%}
                           <li>
                             <a
                               {% if link_url != blank %}href="{{ link_url }}"{% else %}href="{{ routes.all_products_collection_url }}"{% endif %}
@@ -120,6 +216,83 @@
                         {%- endfor -%}
                       </ul>
                     {%- endif -%}
+                  {%- when 'contact_info' -%}
+                    <div class="footer-block__details-content footer-contact-info">
+                      {%- if block.settings.show_logo -%}
+                        <div class="footer-block__image-wrapper" style="max-width: min(100%, 140px); margin-bottom: 1.5rem;">
+                          <img
+                            src="{{ 'orvella-logo-maroon.png' | asset_url }}"
+                            alt="{{ shop.name }}"
+                            loading="lazy"
+                            width="140"
+                            height="{{ 140 | divided_by: 1.898 | round }}"
+                            style="width:100%; height:auto;"
+                          >
+                        </div>
+                      {%- endif -%}
+                      <ul class="list-unstyled">
+                        {%- if block.settings.address != blank -%}
+                          <li class="footer-contact-info__item">
+                            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                            <span>{{ block.settings.address | escape }}</span>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.email != blank -%}
+                          <li class="footer-contact-info__item">
+                            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                            <a href="mailto:{{ block.settings.email | strip }}" class="link link--text">{{ block.settings.email | escape }}</a>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.phone != blank -%}
+                          <li class="footer-contact-info__item">
+                            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+                            <a href="tel:{{ block.settings.phone | remove: ' ' | remove: '-' }}" class="link link--text">{{ block.settings.phone | escape }}</a>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.whatsapp != blank -%}
+                          <li class="footer-contact-info__item">
+                            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3z"/></svg>
+                            <a href="https://wa.me/{{ block.settings.whatsapp | remove: '+' | remove: ' ' | remove: '-' }}" class="link link--text" target="_blank" rel="noopener">{{ block.settings.whatsapp | escape }}</a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                      {%- if block.settings.show_social and has_social_icons -%}
+                        {%- render 'social-icons', class: 'footer__list-social' -%}
+                      {%- endif -%}
+                    </div>
+                  {%- when 'newsletter_signup' -%}
+                    <div class="footer-block__details-content footer-newsletter-block">
+                      {%- if block.settings.subtext != blank -%}
+                        <p class="footer-newsletter-block__text">{{ block.settings.subtext | escape }}</p>
+                      {%- endif -%}
+                      {%- form 'customer', id: 'FooterNewsletterBlock', class: 'footer-newsletter-block__form' -%}
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="footer-newsletter-block__row">
+                          <label class="visually-hidden" for="FooterNewsletterEmail-{{ block.id }}">{{ 'newsletter.label' | t }}</label>
+                          <input
+                            id="FooterNewsletterEmail-{{ block.id }}"
+                            type="email"
+                            name="contact[email]"
+                            value="{{ form.email }}"
+                            placeholder="{{ 'newsletter.label' | t }}"
+                            autocomplete="email"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            required
+                            {% if form.errors %}aria-invalid="true" aria-describedby="FooterNewsletterBlock-error"{% endif %}
+                          >
+                          <button type="submit" name="commit">{{ block.settings.button_label | default: 'Subscribe' | escape }}</button>
+                        </div>
+                        {%- if form.errors -%}
+                          <small class="footer-newsletter-block__message" id="FooterNewsletterBlock-error">
+                            {{- form.errors.translated_fields.email | capitalize }}
+                            {{ form.errors.messages.email -}}
+                          </small>
+                        {%- elsif form.posted_successfully? -%}
+                          <small class="footer-newsletter-block__message" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</small>
+                        {%- endif -%}
+                      {%- endform -%}
+                    </div>
                   {%- when 'brand_contact' -%}
                     <div class="footer-block__brand-info">
                       <div class="footer-block__image-wrapper" style="max-width: min(100%, 150px);">
@@ -390,6 +563,18 @@
   </div>
 </footer>
 
+{%- if section.settings.whatsapp_float != blank -%}
+  <a
+    class="footer-whatsapp-float"
+    href="https://wa.me/{{ section.settings.whatsapp_float | remove: '+' | remove: ' ' | remove: '-' }}"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3z"/></svg>
+  </a>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.footer.name",
@@ -412,6 +597,75 @@
           "id": "menu",
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+        }
+      ]
+    },
+    {
+      "type": "contact_info",
+      "name": "Contact info (custom)",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Contact Us",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_logo",
+          "default": true,
+          "label": "Show Orvella logo"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp",
+          "label": "WhatsApp number",
+          "info": "International format, e.g. +92 300 1234567"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": true,
+          "label": "Show social icons"
+        }
+      ]
+    },
+    {
+      "type": "newsletter_signup",
+      "name": "Newsletter signup (custom)",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Newsletter Signup",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "default": "Subscribe to our newsletter for exclusive updates",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Subscribe",
+          "label": "Button label"
         }
       ]
     },
@@ -670,6 +924,12 @@
       "id": "payment_enable",
       "default": true,
       "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_float",
+      "label": "Floating WhatsApp button number",
+      "info": "Shows a green WhatsApp chat button on every page. International format, e.g. +92 300 1234567. Leave blank to hide."
     },
     {
       "type": "checkbox",
