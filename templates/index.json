@@ -153,7 +153,7 @@
           "type": "category",
           "settings": {
             "title": "Baby & Kids",
-            "fallback_image": "orvella-hero-new-arrival.png",
+            "fallback_image": "category-baby-kids.png",
             "link": "/collections/baby-kids-baby-kids"
           }
         }
