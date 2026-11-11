@@ -138,7 +138,7 @@
           "settings": {
             "title": "Storage & Organizers",
             "fallback_image": "orvella-kitchen-dining.png",
-            "link": "/collections/storage-organizers"
+            "link": "/collections/storage-organizers-storage-organizers"
           }
         },
         "cat_5": {
@@ -146,7 +146,7 @@
           "settings": {
             "title": "Kitchen & Dining",
             "fallback_image": "orvella-kitchen-dining.png",
-            "link": "/collections/kitchen-dining"
+            "link": "/collections/kitchen-dining-kitchen-dining"
           }
         },
         "cat_6": {
@@ -154,7 +154,7 @@
           "settings": {
             "title": "Baby & Kids",
             "fallback_image": "orvella-hero-new-arrival.png",
-            "link": "/collections/baby-kids"
+            "link": "/collections/baby-kids-baby-kids"
           }
         }
       },
