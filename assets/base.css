@@ -3635,3 +3635,14 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* Orvella: bolder homepage section headings and category tile names */
+.collection__title .title,
+.collection-list-title {
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+}
+
+.collection-card-wrapper .card__heading {
+  font-weight: 600;
+}
