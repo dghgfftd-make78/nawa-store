@@ -145,7 +145,7 @@
           "type": "category",
           "settings": {
             "title": "Kitchen & Dining",
-            "fallback_image": "orvella-kitchen-dining.png",
+            "fallback_image": "category-kitchen-dining.png",
             "link": "/collections/kitchen-dining-kitchen-dining"
           }
         },
