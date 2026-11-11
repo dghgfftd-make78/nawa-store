@@ -71,8 +71,8 @@
         "slide_4": {
           "type": "slide",
           "settings": {
-            "fallback_image": "orvella-kitchen-dining.png",
-            "fallback_alt": "Orvella Kitchen and Dining — Where function meets effortless style",
+            "fallback_image": "",
+            "fallback_alt": "Orvella home essentials",
             "fallback_ratio": 30.68,
             "fallback_bg": "#FFFFFF",
             "image_overlay_opacity": 0,
@@ -86,7 +86,8 @@
             "heading_size": "h1",
             "link": "shopify://collections/all",
             "button_style_secondary": false,
-            "text_alignment_mobile": "center"
+            "text_alignment_mobile": "center",
+            "fallback_video": "orvella-hero-video-3.mp4"
           }
         }
       },
