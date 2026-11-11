@@ -129,7 +129,7 @@
           "type": "category",
           "settings": {
             "title": "Exclusive Collection",
-            "fallback_image": "orvella-hero-image.png",
+            "fallback_image": "category-exclusive-collection.png",
             "link": "/collections/exclusive-collection"
           }
         },
