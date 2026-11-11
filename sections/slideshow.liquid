@@ -2,6 +2,68 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  /* Image slides: slow cinematic zoom plus one soft golden shine each time the slide comes into view. */
+  #Slider-{{ section.id }} .slideshow__fallback-image {
+    transform-origin: 60% 50%;
+    will-change: transform;
+  }
+  #Slider-{{ section.id }} .slideshow__slide[aria-hidden='false'] .slideshow__fallback-image {
+    animation: orvella-hero-zoom-{{ section.id }} 7s ease-out both;
+  }
+  #Slider-{{ section.id }} .slideshow__shine {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+  #Slider-{{ section.id }} .slideshow__shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 35%;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 236, 190, 0.38) 50%, transparent 100%);
+    transform: skewX(-15deg);
+    opacity: 0;
+  }
+  #Slider-{{ section.id }} .slideshow__slide[aria-hidden='false'] .slideshow__shine::after {
+    animation: orvella-hero-shine-{{ section.id }} 2.4s ease-in-out 0.9s both;
+  }
+  @keyframes orvella-hero-zoom-{{ section.id }} {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+  @keyframes orvella-hero-shine-{{ section.id }} {
+    0% {
+      left: -60%;
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      left: 130%;
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #Slider-{{ section.id }} .slideshow__slide[aria-hidden='false'] .slideshow__fallback-image,
+    #Slider-{{ section.id }} .slideshow__slide[aria-hidden='false'] .slideshow__shine::after {
+      animation: none;
+    }
+  }
+{%- endstyle -%}
+
 {%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -193,12 +255,14 @@
           {%- elsif block.settings.fallback_image != blank -%}
             {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" style="display:block; width:100%; height:100%;">{%- endif -%}
             <img
+              class="slideshow__fallback-image"
               src="{{ block.settings.fallback_image | asset_url }}"
               alt="{{ block.settings.fallback_alt | default: shop.name | escape }}"
               loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
               {% if forloop.first %}fetchpriority="high"{% endif %}
               style="display:block; width:100%; height:100%; object-fit:contain; object-position:center center; background-color:{{ block.settings.fallback_bg | default: '#F4EEE3' }};"
             >
+            <span class="slideshow__shine" aria-hidden="true"></span>
             {%- if block.settings.link != blank -%}</a>{%- endif -%}
           {%- else -%}
             {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
