@@ -18,6 +18,19 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+{%- style -%}
+  #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+  }
+  @media screen and (min-width: 750px) {
+    #AnnouncementBar-{{ section.id }} .announcement-bar__message {
+      font-size: 1.6rem;
+    }
+  }
+{%- endstyle -%}
+
 {%- if section.settings.marquee -%}
   {%- style -%}
     #AnnouncementBar-{{ section.id }} {
